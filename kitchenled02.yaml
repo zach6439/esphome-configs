@@ -16,3 +16,5 @@ packages:
     file: packages/lighting/singledimmer.yaml
     vars:
       pin: D8
+
+      #test
