@@ -1,0 +1,21 @@
+substitutions: #for the name of the fan to input below
+  name: bedroom #Specific name 
+  zone: zach    #Zone in room
+  device_type: buttonstation #Device Type
+  namefull: "${name}_${zone}_${device_type}" #Specific name with device type
+  nameforesphomefile: "${name}${zone}${device_type}" # Name for the file
+  loglevel: DEBUG #NONE or DEBUG
+
+  platform: ESP32
+  board: nodemcu-32s
+  ip: 10.30.2.9 
+  
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+
+  peripheral: !include packages/peripheral/8ButtonESP32.yaml
+
+
+
+

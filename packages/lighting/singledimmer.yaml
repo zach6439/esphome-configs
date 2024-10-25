@@ -1,0 +1,21 @@
+# This configuration is specifically made for the retrofit dimmer builds which are standardized with:
+# wemos D1 Mini on Pin 8
+
+# For the config file:
+# packages:
+  # dimmer: !include 
+  #   file: packages/lighting/singledimmer.yaml
+  #   vars:
+  #     pin: D8 #Changeme accordingly
+
+light:
+  - platform: monochromatic
+    id: led_lights
+    name: ${namefull}_dimmer
+    output: output_pwm
+    default_transition_length: 2048ms
+
+output:
+  - platform: esp8266_pwm
+    id: output_pwm
+    pin: ${pin}

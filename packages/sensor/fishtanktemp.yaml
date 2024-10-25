@@ -1,0 +1,38 @@
+
+################################################################################
+# DTH11/22 Temperature and Humidity Sensor
+################################################################################
+# Usage:
+#   Add the following code to package section in the device file changing the 
+#   pin to the coorect pin
+# packages:
+#   dht22: !include 
+#     file: packages/dht22.yaml
+#     vars:
+#       pin: D2
+################################################################################
+
+
+
+
+one_wire:
+  - platform: gpio
+    pin: ${dallas_temp_pin}
+
+sensor:
+  - platform: dallas_temp
+    address: 0xe33c01f096504828
+    name: "${namefull}_temperature"
+    filters:
+      - lambda: return x * (9.0/5.0) + 32.0;
+      - calibrate_linear:
+        - 58.6625 -> 56.3
+        - 60.9125 -> 57.9
+        - 69.35 -> 64
+        - 74.525 -> 67.6
+        - 100.0625 -> 96.6
+        - 102.65 -> 100.2
+        - 125.825 -> 120.9
+    unit_of_measurement: "°F"
+
+    

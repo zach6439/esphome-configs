@@ -1,0 +1,25 @@
+substitutions: #for the name of the fan to input below
+  name: fishtank #Specific name 
+  namefull: "${name}" #Specific name with device type
+  nameforesphomefile: "${name}"
+  loglevel: DEBUG
+  
+  platform: ESP8266
+  board: d1_mini
+  ip: 10.30.2.50
+  
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+
+  dallastemp: !include 
+    file: packages/sensor/fishtanktemp.yaml
+    vars:
+      dallas_temp_pin: D4
+      
+  leak: !include 
+    file: packages/sensor/leak.yaml
+    vars:
+      leak_sensor_pin: D5
+
+

@@ -1,0 +1,16 @@
+---
+services:
+  esphome:
+    image: ghcr.io/esphome/esphome:latest
+    container_name: esphome
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - ESPHOME_DASHBOARD_USE_PING=false #optional, set to true if mDNS is not seeing the devices
+    volumes:
+      - ~/Documents/GitHub/homeassistant-chadbourne/esphome:/config/esphome #nested to be compatable with how the HA ESPhome add on maps
+
+    ports:
+      - 6052:6052
+    restart: unless-stopped

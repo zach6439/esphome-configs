@@ -1,0 +1,131 @@
+
+
+binary_sensor:
+  - platform: gpio # For push button onboard
+    id: push_button
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+
+    on_multi_click:
+      - timing:
+        - ON for 1s to 3s
+        - OFF for at least 0.2s
+        then:
+          - logger.log: "Long Press"
+          - fan.turn_off:
+              id: bedroomboxfan
+
+      - timing:
+        - ON for at most 1s
+        - OFF for at least 0.2s
+        then:
+          - logger.log: "Single Press"
+          - fan.turn_on:
+              id: bedroomboxfan
+              speed: 3
+
+      - timing:
+        - ON for at most 1s
+        - OFF for at most 1s
+        - ON for at most 1s
+        - OFF for at least 0.2s
+        then:
+          - logger.log: "Double Press"
+          - fan.turn_on:
+              id: bedroomboxfan
+              speed: 2
+
+      - timing:
+        - ON for at most 1s
+        - OFF for at most 1s
+        - ON for at most 1s
+        - OFF for at most 1s
+        - ON for at most 1s
+        - OFF for at least 0.2s
+        then:
+          - logger.log: "Triple Press"
+          - fan.turn_on:
+              id: bedroomboxfan
+              speed: 1
+
+switch:
+  - platform: gpio
+    internal: true
+    name: "${namefull}_high_relay"
+    pin: 
+      number: D5
+    inverted: True
+    icon: mdi:fan-speed-3
+    id: relay3
+    interlock: &interlock_group [relay1, relay2, relay3]
+    interlock_wait_time: 300ms
+            
+  - platform: gpio
+    name: "${namefull}_medium_relay"
+    internal: true
+    pin: 
+      number: D6
+    inverted: True
+    icon: mdi:fan-speed-2
+    id: relay2
+    interlock: *interlock_group
+    interlock_wait_time: 300ms
+            
+  - platform: gpio
+    name: "${namefull}_low_relay"
+    internal: true
+    pin: 
+      number: D7
+    inverted: True
+    icon: mdi:fan-speed-1
+    id: relay1 
+    interlock: *interlock_group
+    interlock_wait_time: 300ms
+
+output:
+  - platform: template
+    id: fan_1
+    type: float 
+    write_action:
+      - if:
+          condition:
+            lambda: return ((state == 0));
+          then:
+            # action for off
+            - switch.turn_off: relay1
+            - switch.turn_off: relay2
+            - switch.turn_off: relay3
+      - if:
+          condition:
+            lambda: return ((state > 0) && (state < 0.4));
+          then:
+            # action for speed 1
+            - switch.turn_off: relay2
+            - switch.turn_off: relay3
+            - switch.turn_on: relay1
+            
+      - if:
+          condition:
+            lambda: return ((state > 0.4) && (state < 0.7));
+          then:
+            # action for speed 2
+            - switch.turn_off: relay1
+            - switch.turn_off: relay3
+            - switch.turn_on: relay2
+            
+      - if:
+          condition:
+            lambda: return ((state > 0.7));
+          then:
+            # action for speed 3
+            - switch.turn_off: relay1
+            - switch.turn_off: relay2
+            - switch.turn_on: relay3
+
+fan:
+  - platform: speed
+    id: bedroomboxfan
+    output: fan_1
+    name: "${namefull}"
+    speed_count: 3

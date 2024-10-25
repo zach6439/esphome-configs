@@ -1,0 +1,79 @@
+
+#https://omarghader.github.io/esp32-cam-tutorial/
+#https://www.amazon.com/gp/product/B07S5PVZKV/ref=ewc_pr_img_2?smid=A2NHKNRXF8LPRC&psc=1
+
+esphome:
+  name: espcamone
+  platform: ESP32
+  board: esp32dev
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: 10.30.3.1
+    gateway: 10.30.0.1
+    subnet: 255.255.0.0
+    
+# Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "$name Atmo Fallback Hotspot"
+    password: !secret ap_fallback_pass
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret api_enc
+
+ota:
+  password: !secret ota_pass
+
+substitutions:
+  # Modify variables based on your settings
+  name: 'cam1'
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
+
+# ESP32-CAM
+esp32_camera:
+  external_clock:
+    pin: GPIO0
+    frequency: 20MHz
+  i2c_pins:
+    sda: GPIO26
+    scl: GPIO27
+  data_pins: [GPIO5, GPIO18, GPIO19, GPIO21, GPIO36, GPIO39, GPIO34, GPIO35]
+  vsync_pin: GPIO25
+  href_pin: GPIO23
+  pixel_clock_pin: GPIO22
+  power_down_pin: GPIO32
+  name: cam1
+  max_framerate: 5 fps    # default: 10 fps, max 60
+  idle_framerate: 0.2 fps # default: 0.1 fps - framerate for 'picture' in HA dashboard
+  resolution: 800x600     # default: 640x480 (VGA) - higher res requires more memory
+  jpeg_quality: 10        # 10 (best) to 63 (worst)
+
+
+# Flashlight
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: gpio_4
+
+## GPIO_4 is the flash light pin
+light:
+  - platform: binary
+    output: gpio_4
+    name: $name light
+    
+switch:
+  - platform: restart
+    name: "$name Restart"

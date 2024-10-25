@@ -1,0 +1,16 @@
+substitutions: #for the name of the fan to input below
+  name: office #Specific name 
+  device_type: ac #Device Type
+  namefull: "${name}_${device_type}" #Specific name with device type
+  nameforesphomefile: "${name}${device_type}"
+  loglevel: DEBUG #NONE or DEBUG
+  
+  platform: ESP8266
+  board: esp01_1m
+  ip: 10.30.X.X
+
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+  sonoff31: !include packages/sonoffs31.yaml
+

@@ -1,0 +1,79 @@
+
+# For the config file:
+# packages:
+#   bme680: !include 
+#     file: packages/bme680.yaml
+#     vars:
+#       address: 0x77 #Changeme accordingly
+
+sensor:
+  - platform: bme680
+    temperature:
+      name: "${namefull}_Temperature"
+      oversampling: 16x
+    pressure:
+      name: "${namefull}_Pressure"
+      unit_of_measurement: "inHg"
+      id: actual_pressure
+      filters:
+        - lambda: return x * 0.02953; #Convert to inHg
+#        - sliding_window_moving_average: #Smoothing out data - Id rather not use this, as I want raw data into HA. However this may be what I need to do to create a Rising/Falling Indicator
+#            window_size: 3 # How many samples are averaged
+#            send_every: 1 # How many readings before publishing
+#      on_value:
+#        then:
+#          - if:
+#              condition:
+#                lambda: 'Increase'
+#              then:
+#              else:
+    humidity:
+      id: "humidity"
+      name: "${namefull}_Humidity"
+    gas_resistance:
+      id: "gas_resistance"
+      name: "${namefull}_Gas_Resistance"
+    address: ${address} 
+    update_interval: 60s
+  - platform: template
+    name: "${namefull}_Indoor_Air_Quality"
+    id: iaq
+    icon: "mdi:gauge"
+    lambda: |-  # caulculation: comp_gas = log(R_gas[ohm]) + 0.04 log(Ohm)/%rh * hum[%rh]
+      return log(id(gas_resistance).state) + 0.04 *  id(humidity).state;
+
+#binary_sensor:
+#  - platform: template
+#    name: "${namefull}_Pressure_Changes"
+#    id: pressure_changes
+#    icon: "mdi:gauge"
+      
+text_sensor:
+  - platform: template
+    name: "${namefull}_IAQ_Classification"
+    icon: "mdi:checkbox-marked-circle-outline"
+    lambda: |-
+      if (int(id(iaq).state) <= 50) {
+        return {"Excellent"};
+      }
+      else if (int(id(iaq).state) <= 100) {
+        return {"Good"};
+      }
+      else if (int(id(iaq).state) <= 150) {
+        return {"Lightly polluted"};
+      }
+      else if (int(id(iaq).state) <= 200) {
+        return {"Moderately polluted"};
+      }
+      else if (int(id(iaq).state) <= 250) {
+        return {"Heavily polluted"};
+      }
+      else if (int(id(iaq).state) <= 350) {
+        return {"Severely polluted"};
+      }
+      else if (int(id(iaq).state) <= 500) {
+        return {"Extremely polluted"};
+      }
+      else {
+        return {"unknown"};
+      }

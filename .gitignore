@@ -1,0 +1,24 @@
+# Gitignore settings for ESPHome
+# This is an example and may include too much for your use-case.
+# You can modify this file to suit your needs.
+
+
+
+!*.yaml
+!.gitignore
+!*.md
+
+
+/secrets.yaml
+/platformio/
+/esphome/
+/build/
+/storage/
+/.esphome/
+
+
+!packages/**/secrets.yaml ## Allows for all secret.yaml files to load within the package folder but not the root
+
+
+
+

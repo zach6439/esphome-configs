@@ -1,0 +1,10 @@
+binary_sensor:
+  - platform: gpio
+    pin: 
+      number: ${leak_sensor_pin}
+      mode:
+        input: true
+        pullup: true
+    name: "${namefull}_leak_sensor"
+    device_class: moisture
+    

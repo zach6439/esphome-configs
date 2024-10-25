@@ -1,0 +1,88 @@
+substitutions: #for the name of the fan to input below
+  name: office #Specific name 
+  zone: monitor    #Zone in room
+  device_type: led_dimmer #Device Type
+  namefull: "${name}_${zone}_${device_type}" #Specific name with device type
+  nameforesphomefile: "${name}${zone}leddimmer"
+  
+  platform: ESP8266
+  board: d1_mini
+  ip: 10.30.2.15
+  
+#---Base Config Start---#  
+esphome:
+  name: "${nameforesphomefile}"
+  platform: "${platform}"
+  board: "${board}"
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: "${ip}"
+    gateway: 10.30.0.1
+    subnet: 255.255.0.0
+    
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${namefull}"
+    password: !secret ap_fallback_pass
+captive_portal:
+logger: # Enable logging
+api: 
+  encryption:
+    key: !secret api_enc
+ota:
+  platform: esphome
+  password: !secret ota_pass
+#---Base Config End---#  
+
+light:
+  - platform: monochromatic
+    id: led_lights
+    name: ${namefull}_dimmer
+    output: output_pwm
+    default_transition_length: 2048ms
+    
+output:
+  - platform: esp8266_pwm
+    id: output_pwm
+    pin: D8
+    
+sensor:
+#---Base Config - Wifi Sensors Start---#  
+  - platform: wifi_signal     #Wifi Signal
+    name: "${namefull}_wifi_signal"
+    update_interval: 60s  
+  - platform: uptime          #Uptime in Seconds
+    name: "${namefull}_wifi_uptime_seconds"
+    id: uptime_sensor
+    update_interval: 60s
+    internal: True
+    on_raw_value:
+      then:
+        - text_sensor.template.publish:
+            id: uptime_human
+            state: !lambda |-
+              int seconds = round(id(uptime_sensor).raw_state);
+              int days = seconds / (24 * 3600);
+              seconds = seconds % (24 * 3600);
+              int hours = seconds / 3600;
+              seconds = seconds % 3600;
+              int minutes = seconds /  60;
+              seconds = seconds % 60;
+              return (
+                (days ? String(days) + "d " : "") +
+                (hours ? String(hours) + "h " : "") +
+                (minutes ? String(minutes) + "m " : "") +
+                (String(seconds) + "s")
+              ).c_str();
+text_sensor:                  #Human Readable Uptime
+  - platform: template
+    name: "${namefull}_wifi_uptime"
+    id: uptime_human
+    icon: mdi:clock-start
+#---Base Config - Wifi Sensors End---#  
+
+button: # Restart Button Standard
+  - platform: restart
+    name: "${namefull}_restart"

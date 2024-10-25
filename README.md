@@ -1,2 +1,2 @@
 # ESPHome-Configs
-My ESPHome Configuration file
+My ESPHome Configuration files

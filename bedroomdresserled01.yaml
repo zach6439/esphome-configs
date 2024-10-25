@@ -1,0 +1,18 @@
+substitutions: #for the name of the fan to input below
+  name: bedroomdresserled01 #Specific name 
+  namefull: "${name}" #Specific name with device type
+  nameforesphomefile: "${name}"
+  loglevel: DEBUG #NONE or DEBUG
+  
+  platform: ESP8266
+  board: d1_mini
+  ip: 10.30.2.16
+
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+    
+  dimmer: !include 
+    file: packages/lighting/singledimmer.yaml
+    vars:
+      pin: D8

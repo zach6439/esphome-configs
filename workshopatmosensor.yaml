@@ -1,0 +1,19 @@
+substitutions: #for the name of the fan to input below
+  name: workshop #Specific name 
+  device_type: atmo_sensor #Device Type
+  namefull: "${name}_${device_type}" #Specific name with device type
+  nameforesphomefile: "${name}atmosensor"
+  loglevel: DEBUG #NONE or DEBUG
+  
+  platform: ESP8266
+  board: d1_mini
+  ip: 10.30.2.2
+
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+    
+  dht22: !include 
+    file: packages/sensor/dht22.yaml
+    vars:
+      pin: D2

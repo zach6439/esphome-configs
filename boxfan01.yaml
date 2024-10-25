@@ -1,0 +1,18 @@
+substitutions: #for the name of the fan to input below
+  name: boxfan01 #Specific name 
+  namefull: "${name}_" #Specific name with device type
+  nameforesphomefile: "${name}" #name for filess
+  loglevel: DEBUG #NONE or DEBUG
+  
+  platform: ESP8266
+  board: d1_mini
+  ip: 10.30.2.7
+  
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+  3speedfan: !include 
+    file: packages/hvac/3speedfan.yaml
+
+  
+  

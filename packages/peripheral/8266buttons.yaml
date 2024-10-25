@@ -1,0 +1,63 @@
+binary_sensor:
+  - platform: gpio #1
+    pin:
+      number: D1
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${namefull}_key_1"
+    filters:
+      - delayed_on: 10ms
+    
+  - platform: gpio #2
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${namefull}_key_2"
+    filters:
+      - delayed_on: 10ms
+       
+  - platform: gpio #3
+    pin:
+      number: D3
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${namefull}_key_3"
+    filters:
+      - delayed_on: 10ms
+    
+  - platform: gpio #4
+    pin:
+      number: D4
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${namefull}_key_4"
+    filters:
+      - delayed_on: 10ms
+    
+  - platform: gpio #5
+    pin:
+      number: D5
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "${namefull}_key_5"
+    filters:
+      - delayed_on: 10ms 
+    
+  - platform: gpio #6
+    pin:
+      number: D6
+      mode: INPUT_PULLUP
+      inverted: True  
+    name: "${namefull}_key_6"
+    filters:
+      - delayed_on: 10ms
+      
+  - platform: gpio #7
+    pin:
+      number: D7
+      mode: INPUT_PULLUP
+      inverted: True  
+    name: "${namefull}_key_7"
+    filters:
+      - delayed_on: 10ms

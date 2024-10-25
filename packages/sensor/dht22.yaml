@@ -1,0 +1,27 @@
+################################################################################
+# DTH11/22 Temperature and Humidity Sensor
+################################################################################
+# Usage:
+#   Add the following code to package section in the device file changing the 
+#   pin to the coorect pin
+# packages:
+#   dht22: !include 
+#     file: packages/dht22.yaml
+#     vars:
+#       pin: D2
+################################################################################
+
+sensor:
+  - platform: dht # Temp and Humidity
+    model: AM2302
+    pin: ${pin}
+    temperature:
+      name: "${namefull}_temperature"
+#      id: "${namefull}_temperature"
+      filters:
+        offset: -2.8
+    humidity:
+      name: "${namefull}_humidity"
+#     id: something_humidity
+    update_interval: 60s
+# update_interval: ${device_sampling_time} - convert to this eventually

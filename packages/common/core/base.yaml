@@ -1,0 +1,38 @@
+esphome:
+  name: "${nameforesphomefile}"
+  platform: "${platform}"
+  board: "${board}"
+
+logger: # Enable logging
+  level: "${loglevel}"
+
+api: # Enable API with encription
+  encryption:
+    key: !secret api_enc
+
+ota: #Enables Over the Air Updating of files
+  platform: esphome
+  password: !secret ota_pass
+
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    
+
+button: # Restart Button
+  - platform: restart
+    name: "${namefull}_restart"
+  - platform: safe_mode
+    name: "${namefull}_safe_mode_restart"
+    disabled_by_default: true
+
+# Text Sensors NT WORKING Doesnt like susbstitutions
+text_sensor:
+  # ESP Version Sensor
+  - platform: version
+    name: ESPHome Version
+    hide_timestamp: true
+    disabled_by_default: true
+
+packages:
+  wifi: !include /config/esphome/packages/common/network/wifi.yaml

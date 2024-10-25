@@ -1,0 +1,18 @@
+substitutions: #for the name of the fan to input below
+  name: office #Specific name 
+  zone: moni    #Zone in room
+  device_type: buttonstation #Device Type
+  namefull: "${name}_${zone}_${device_type}" #Specific name with device type
+  nameforesphomefile: "${name}${zone}${device_type}"
+  loglevel: DEBUG #NONE or DEBUG
+
+  platform: ESP8266
+  board: d1_mini
+  ip: 10.30.2.13
+
+  
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+  buttonstation: !include packages/7ButtonD1Mini.yaml
+

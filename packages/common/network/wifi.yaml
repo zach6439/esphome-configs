@@ -1,0 +1,45 @@
+wifi: # Sets up wifi, with fallbacks
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: "${ip}" #Defined in actual file
+    gateway: 10.30.0.1 #Default Gateway for iotnet
+    subnet: 255.255.0.0
+
+sensor:
+  - platform: wifi_signal #Wifi Signal RSSI
+    name: "${namefull}_rssi"
+    icon: mdi:wifi
+    update_interval: 60s
+    entity_category: diagnostic
+
+  - platform: uptime #Uptime in Seconds
+    name: "${namefull}_wifi_uptime_seconds"
+    id: uptime_sensor
+    update_interval: 60s
+    internal: True
+    on_raw_value:
+      then:
+        - text_sensor.template.publish: # Lambda to adjust the time to be readable
+            id: uptime_human
+            state: !lambda |-
+              int seconds = round(id(uptime_sensor).raw_state);
+              int days = seconds / (24 * 3600);
+              seconds = seconds % (24 * 3600);
+              int hours = seconds / 3600;
+              seconds = seconds % 3600;
+              int minutes = seconds /  60;
+              seconds = seconds % 60;
+              return (
+                (days ? String(days) + "d " : "") +
+                (hours ? String(hours) + "h " : "") +
+                (minutes ? String(minutes) + "m " : "") +
+                (String(seconds) + "s")
+              ).c_str();
+
+text_sensor: #Human Readable Uptime conversion
+  - platform: template
+    name: "${namefull}_wifi_uptime"
+    id: uptime_human
+    icon: mdi:clock-start
+    entity_category: "diagnostic" #If this is sti;l showing up in sensor category then device needs to be removed and re-added to HA

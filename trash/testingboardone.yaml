@@ -1,0 +1,22 @@
+substitutions: #for the name of the fan to input below
+  name: testingboard #Specific name 
+  device_type: testingboard #Device Type
+  namefull: "${name}" #Specific name with device type
+  nameforesphomefile: "${name}"
+  loglevel: DEBUG #NONE or DEBUG
+  
+  platform: ESP8266
+  board: nodemcuv2
+  ip: 10.30.2.100
+
+packages:
+  base: !include packages/base.yaml
+  bme680: !include packages/bme680.yaml
+  lux: !include packages/bh1750.yaml
+
+i2c:
+  sda: 4
+  scl: 5
+  scan: true
+  id: bus_a
+# Example configuration entry
