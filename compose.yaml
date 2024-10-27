@@ -18,3 +18,7 @@ services:
     ports:
       - 6052:6052
     restart: unless-stopped
+
+# Will need to make a local .env with:
+# ESPHOME_USERNAME=your-secure-username
+# ESPHOME_PASSWORD=your-secure-password
