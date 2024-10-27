@@ -9,12 +9,8 @@ services:
       - TZ=Etc/UTC
       - ESPHOME_DASHBOARD_USE_PING=false #optional, set to true if mDNS is not seeing the devices
     volumes:
-      - ~/esphome-configs:/config/esphome 
-      # Docker expects the files to be at /config 
-      # using /config/esphome as this is required to maintain compatibility with HAs Add On
-      # This does prevent the webserver from seeing the files 
+      - ~/esphome-configs:/config/esphome # using /config/esphome as this is required to maintain compatibility with HAs Add On
     command: dashboard --username ${ESPHOME_USERNAME} --password ${ESPHOME_PASSWORD} /config/esphome # sets dashboard to proper dir, by default it would look at /config
-
     ports:
       - 6052:6052
     restart: unless-stopped
