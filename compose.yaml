@@ -13,6 +13,7 @@ services:
       # Docker expects the files to be at /config 
       # using /config/esphome as this is required to maintain compatibility with HAs Add On
       # This does prevent the webserver from seeing the files 
+    command: dashboard ${ESPHOME_USERNAME} --password ${ESPHOME_PASSWORD} /config/esphome # sets dashboard to proper dir, by default it would look at /config
 
     ports:
       - 6052:6052
