@@ -7,9 +7,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - ESPHOME_DASHBOARD_USE_PING=false #optional, set to true if mDNS is not seeing the devices
+      - ESPHOME_DASHBOARD_USE_PING=true #optional, set to true if mDNS is not seeing the devices
     volumes:
       - ~/esphome-configs:/config/esphome # using /config/esphome as this is required to maintain compatibility with HAs Add On
+      - /etc/localtime:/etc/localtime:ro  
     command: dashboard --username ${ESPHOME_USERNAME} --password ${ESPHOME_PASSWORD} /config/esphome # sets dashboard to proper dir, by default it would look at /config
     ports:
       - 6052:6052
@@ -18,3 +19,4 @@ services:
 # Will need to make a local .env with:
 # ESPHOME_USERNAME=your-secure-username
 # ESPHOME_PASSWORD=your-secure-password
+ 
