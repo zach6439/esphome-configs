@@ -16,6 +16,8 @@
 /storage/
 /.esphome/
 .env
+.DS_Store
+
 
 
 !packages/**/secrets.yaml ## Allows for all secret.yaml files to load within the package folder but not the root
