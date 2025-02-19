@@ -5,11 +5,11 @@ substitutions: #for the name of the fan to input below
   namefull: "${name}_${zone}_${device_type}" #Specific name with device type
   nameforesphomefile: "${name}${zone}${device_type}" # Name for the file
   loglevel: DEBUG #NONE or DEBUG
-
-  platform: ESP32
-  board: nodemcu-32s
   ip: 10.30.2.9 
   
+esp32:
+  board: nodemcu-32s # Will be replaced with package at later date, currently pins used in 8 button conflict with uart etc
+
 packages:
   base: !include 
     file: packages/common/core/base.yaml

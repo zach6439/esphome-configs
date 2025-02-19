@@ -38,11 +38,11 @@ i2c:
   sda: GPIO4
   scl: GPIO5
   scan: true
-  id: ${device_internal_name}_i2c
+  id: ${name}_i2c
 
 # UART
 uart:
-  id: ${device_internal_name}_uart_presence
+  id: ${name}_uart_presence
   tx_pin: GPIO1
   rx_pin: GPIO3
   baud_rate: 256000

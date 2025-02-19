@@ -1,7 +1,5 @@
 esphome:
   name: "${nameforesphomefile}"
-  platform: "${platform}"
-  board: "${board}"
 
 logger: # Enable logging
   level: "${loglevel}"

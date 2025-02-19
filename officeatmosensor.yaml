@@ -4,14 +4,13 @@ substitutions: #for the name of the fan to input below
   namefull: "${name}_${device_type}" #Specific name with device type
   nameforesphomefile: "${name}atmosensor"
   loglevel: DEBUG #NONE or DEBUG
-  
-  platform: ESP8266
-  board: d1_mini
   ip: 10.30.2.10
-
+  
 packages:
   base: !include 
     file: packages/common/core/base.yaml
+  board: !include   
+    file: packages/board/esp8266/d1mini.yaml
     
   dht22: !include 
     file: packages/sensor/dht22.yaml
