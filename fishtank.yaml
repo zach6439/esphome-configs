@@ -11,7 +11,7 @@ packages:
   base: !include 
     file: packages/common/core/base.yaml
   board: !include   
-    file: packages/board/esp8266/d1mini.yaml
+    file: packages/board/esp8266/d1minisimple.yaml
     
   dallastemp: !include 
     file: packages/sensor/fishtanktemp.yaml
