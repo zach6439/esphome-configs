@@ -5,7 +5,7 @@
 # packages:
 #   board: !include common/esp8266/d1_mini.yaml
 # ------------------------------------------------------------------------------
-
+# This version includes none of the onboard functionality
 ################################################################################
 esp8266:
   board: d1_mini
