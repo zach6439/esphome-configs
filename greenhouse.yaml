@@ -1,8 +1,7 @@
 substitutions: #for the name of the fan to input below
-  name: outside #Specific name 
-  device_type: atmo_sensor #Device Type
-  namefull: "${name}_${device_type}" #Specific name with device type
-  nameforesphomefile: "${name}atmosensor"
+  name: greenhouse #Specific name 
+  namefull: "${name}" #Specific name with device type
+  nameforesphomefile: "${name}"
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.4
   

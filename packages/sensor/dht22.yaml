@@ -18,8 +18,8 @@ sensor:
     temperature:
       name: "${namefull}_temperature"
 #      id: "${namefull}_temperature"
-      filters:
-        offset: -2.8
+#      filters:
+#         offset: -2.8
     humidity:
       name: "${namefull}_humidity"
 #     id: something_humidity
