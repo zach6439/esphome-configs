@@ -1,0 +1,23 @@
+substitutions: #for the name of the fan to input below
+  name: bletesting #Specific name 
+  namefull: "${name}" #Specific name with device type
+  nameforesphomefile: "${name}" #name for filess
+  loglevel: DEBUG #NONE or DEBUG
+  ip: 10.30.2.21
+  
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+  board: !include   
+    file: packages/board/esp32/nodemcu.yaml
+
+
+esp32_ble:
+  id: ${namefull}_ble
+
+esp32_ble_tracker:
+  id: ${namefull}_ble_tracker
+
+bluetooth_proxy:
+  id: ${namefull}_ble_proxy
+  active: true
