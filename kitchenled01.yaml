@@ -1,5 +1,7 @@
 substitutions: #for the name of the fan to input below
   name: kitchenled01 #Specific name 
+  friendlyname: Kitchen LED01
+  area: Main Room
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.11
   sampling_time: 60s

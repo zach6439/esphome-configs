@@ -1,5 +1,7 @@
 substitutions: #for the name of the fan to input below
   name: outdoorsensor #Specific name 
+  friendlyname: Outdoor Atmo Sensor
+  area: Outside
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.17
   sampling_time: 60s

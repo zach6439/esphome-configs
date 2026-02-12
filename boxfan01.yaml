@@ -1,10 +1,14 @@
 substitutions: #for the name of the fan to input below
   name: boxfan01 #Specific name 
+  friendlyname: Box Fan
+  area: basemsent
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.7
   sampling_time: 60s
+  
 
   
+
 packages:
   base: !include 
     file: packages/common/core/base.yaml
