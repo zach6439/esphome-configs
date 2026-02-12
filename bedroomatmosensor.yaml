@@ -5,6 +5,7 @@ substitutions: #for the name of the fan to input below
   nameforesphomefile: "${name}atmosensor"
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.1
+  sampling_time: 60s
 
 packages:
   base: !include 

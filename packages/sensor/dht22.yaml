@@ -16,12 +16,7 @@ sensor:
     model: AM2302
     pin: ${pin}
     temperature:
-      name: "${namefull}_temperature"
-#      id: "${namefull}_temperature"
-#      filters:
-#         offset: -2.8
+      name: "Temperature"
     humidity:
-      name: "${namefull}_humidity"
-#     id: something_humidity
-    update_interval: 60s
-# update_interval: ${device_sampling_time} - convert to this eventually
+      name: "Humidity"
+    update_interval: ${sampling_time}

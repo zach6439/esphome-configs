@@ -14,16 +14,16 @@
 sensor:
   - platform: bme680
     temperature:
-      name: "${name}_Temperature"
+      name: "Temperature"
       oversampling: 16x
     pressure:
-      name: "${name}_Pressure"
+      name: "Pressure"
     humidity:
       id: "humidity"
-      name: "${name}_Humidity"
+      name: "Humidity"
     gas_resistance:
       id: "gas_resistance"
-      name: "${name}_Gas_Resistance"
+      name: "Gas Resistance"
     address: 0x77
-    update_interval: 60s
+    update_interval: ${sampling_time}
 

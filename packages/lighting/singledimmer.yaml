@@ -7,13 +7,16 @@
   #   file: packages/lighting/singledimmer.yaml
   #   vars:
   #     pin: D8 #Changeme accordingly
+  #     name: Dimmer #Changeme accordingly
+  #     icon: led-strip-variant
 
 light:
   - platform: monochromatic
     id: led_lights
-    name: dimmer
+    name: ${name}
     output: output_pwm
     default_transition_length: 2048ms
+    icon: mdi:${icon}
 
 output:
   - platform: esp8266_pwm

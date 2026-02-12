@@ -1,5 +1,5 @@
 esphome:
-  name: "${nameforesphomefile}"
+  name: "${name}"
 
 logger: # Enable logging
   level: "${loglevel}"
@@ -16,12 +16,11 @@ time:
   - platform: homeassistant
     id: homeassistant_time
     
-
 button: # Restart Button
   - platform: restart
-    name: "${namefull}_restart"
+    name: "Restart"
   - platform: safe_mode
-    name: "${namefull}_safe_mode_restart"
+    name: "Safe Mode Restart"
     disabled_by_default: true
 
 text_sensor:

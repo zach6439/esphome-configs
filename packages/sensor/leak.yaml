@@ -5,6 +5,6 @@ binary_sensor:
       mode:
         input: true
         pullup: true
-    name: "${namefull}_leak_sensor"
+    name: "Leak Sensor"
     device_class: moisture
     

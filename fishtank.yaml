@@ -3,9 +3,9 @@ substitutions: #for the name of the fan to input below
   namefull: "${name}" #Specific name with device type
   nameforesphomefile: "${name}"
   loglevel: DEBUG
-  
-
   ip: 10.30.2.50
+  sampling_time: 60s
+
 
 packages:
   base: !include 
