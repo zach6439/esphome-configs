@@ -2,7 +2,7 @@ substitutions:
   name: econet-hpwh
   friendly_name: Water Heater
   loglevel: DEBUG #NONE or DEBUG
-  ip: 10.30.2.18
+ # ip: 10.30.2.18 Doesnt want to take a static IP
   sampling_time: 60s
 
 packages:
