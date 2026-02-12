@@ -24,7 +24,6 @@ button: # Restart Button
     name: "${namefull}_safe_mode_restart"
     disabled_by_default: true
 
-# Text Sensors NT WORKING Doesnt like susbstitutions
 text_sensor:
   # ESP Version Sensor
   - platform: version

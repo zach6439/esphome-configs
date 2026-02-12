@@ -9,7 +9,7 @@ wifi: # Sets up wifi, with fallbacks
 
 sensor:
   - platform: wifi_signal #Wifi Signal RSSI
-    name: "${namefull}_rssi"
+    name: RSSI
     icon: mdi:wifi
     update_interval: 60s
     entity_category: diagnostic
@@ -20,8 +20,3 @@ text_sensor:
     format:
       separator: " "
       days: "D"
-  - platform: template
-    name: "${namefull}_wifi_uptime"
-    id: uptime_human
-    icon: mdi:clock-start
-    entity_category: "diagnostic" #If this is sti;l showing up in sensor category then device needs to be removed and re-added to HA

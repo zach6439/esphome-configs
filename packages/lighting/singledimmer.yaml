@@ -11,7 +11,7 @@
 light:
   - platform: monochromatic
     id: led_lights
-    name: ${namefull}_dimmer
+    name: dimmer
     output: output_pwm
     default_transition_length: 2048ms
 
