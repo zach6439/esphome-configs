@@ -10,7 +10,8 @@
 ################################################################################
 esp32:
   board: nodemcu-32s
-
+  framework:
+    type: esp-idf
 # Status led
 status_led:
   id: ${name}_status_led

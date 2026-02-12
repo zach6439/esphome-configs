@@ -1,0 +1,34 @@
+substitutions: #for the name of the fan to input below
+  name: outdoorsensor #Specific name 
+  namefull: "${name}" #Specific name with device type
+  nameforesphomefile: "${name}"
+  loglevel: DEBUG #NONE or DEBUG
+  ip: 10.30.2.17
+  
+
+
+
+
+# I2C settings
+i2c:
+  sda: GPIO4
+  scl: GPIO5
+  scan: true
+  id: ${name}_i2c
+
+sensor:
+  - platform: adc
+    pin: VCC
+    name: "Chip Voltage"
+    entity_category: diagnostic
+    disabled_by_default: true
+
+packages:
+  base: !include 
+    file: packages/common/core/base.yaml
+  board: !include   
+    file: packages/board/esp8266/d1minisimple.yaml
+  bme680basic: !include
+    file: packages/sensor/bme680basic.yaml
+    
+

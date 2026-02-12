@@ -1,0 +1,43 @@
+################################################################################
+# NodeMcu ESP32S 
+################################################################################
+# Usage:
+#   Add the following code to package section in the device file
+# ------------------------------------------------------------------------------
+# packages:
+#   board: !include common/esp32/s_nodemcu.yaml
+
+################################################################################
+esp32:
+  board: nodemcu-32s
+  framework:
+    type: esp-idf
+# Status led
+status_led:
+  id: ${name}_status_led
+  pin:
+    number: GPIO2
+    inverted: false
+
+# Sensors
+sensor:
+  # Internal Temperature Sensor
+  - platform: internal_temperature
+    id: ${name}_internal_temperature
+    name: Internal Temperature 
+    icon: mdi:coolant-temperature
+    unit_of_measurement: °C
+    device_class: temperature
+    # update_interval: ${device_sampling_time}
+    disabled_by_default: true
+  
+  - platform: template
+    id: ${name}_internal_temperature_f
+    name: Internal Temperature (F)
+    icon: mdi:coolant-temperature
+    unit_of_measurement: °F
+    lambda: return id(${name}_internal_temperature).state * 9/5+32;
+    device_class: temperature
+    # update_interval: ${device_sampling_time}
+    entity_category: diagnostic
+    disabled_by_default: true

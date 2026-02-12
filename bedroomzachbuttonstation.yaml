@@ -7,13 +7,11 @@ substitutions: #for the name of the fan to input below
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.9 
   
-esp32:
-  board: nodemcu-32s # Will be replaced with package at later date, currently pins used in 8 button conflict with uart etc
-
 packages:
+  board: !include
+    file: packages/board/esp32/nodemcu_simple.yaml
   base: !include 
     file: packages/common/core/base.yaml
-
   peripheral: !include packages/peripheral/8ButtonESP32.yaml
 
 

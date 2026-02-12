@@ -1,0 +1,29 @@
+
+# For the config file:
+# packages:
+#   bme680: !include 
+#     file: packages/sensor/bme680basic.yaml
+
+
+# Dont need this unless i un hard code the address
+#     vars:
+#       address: 0x77 #Changeme accordingly
+
+# VCC to 3.3V, GND to GND, SDA to D2, and SCL to D1
+
+sensor:
+  - platform: bme680
+    temperature:
+      name: "${name}_Temperature"
+      oversampling: 16x
+    pressure:
+      name: "${name}_Pressure"
+    humidity:
+      id: "humidity"
+      name: "${name}_Humidity"
+    gas_resistance:
+      id: "gas_resistance"
+      name: "${name}_Gas_Resistance"
+    address: 0x77
+    update_interval: 60s
+
