@@ -1,3 +1,17 @@
+# For Basic File
+# substitutions: #for the name of the fan to input below
+#   name: #hostname (also file name)
+#   friendlyname: #Friendly Name
+#   area: bedroom #HA Area where it lives
+#   loglevel: DEBUG #NONE or DEBUG
+#   ip: 10.30.X.X
+#   sampling_time: 60s
+
+
+
+
+
+
 esphome:
   name: "${name}"
 

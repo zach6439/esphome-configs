@@ -1,6 +1,7 @@
 substitutions: #for the name of the fan to input below
-  name: workshop #Specific name 
-  device_type: atmo_sensor #Device Type
+  name: workshopatmosensor #Specific name 
+  friendlyname: Workshop Atmo Sensor #Friendly Name
+  area: basement
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.2
   sampling_time: 60s

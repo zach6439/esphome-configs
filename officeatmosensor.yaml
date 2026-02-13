@@ -1,6 +1,7 @@
 substitutions: #for the name of the fan to input below
   name: officeatmosensor #Specific name 
   friendlyname: Office Atmo Sensor
+  loglevel: DEBUG #NONE or DEBUG
   area: Zachs Office
   ip: 10.30.2.10
   sampling_time: 60s
