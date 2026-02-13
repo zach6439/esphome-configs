@@ -52,7 +52,7 @@ binary_sensor:
 switch:
   - platform: gpio
     internal: true
-    name: "${namefull}_high_relay"
+    name: "${name} high relay"
     pin: 
       number: D5
     inverted: True
@@ -62,7 +62,7 @@ switch:
     interlock_wait_time: 300ms
             
   - platform: gpio
-    name: "${namefull}_medium_relay"
+    name: "${name} medium relay"
     internal: true
     pin: 
       number: D6
@@ -73,7 +73,7 @@ switch:
     interlock_wait_time: 300ms
             
   - platform: gpio
-    name: "${namefull}_low_relay"
+    name: "${name} low relay"
     internal: true
     pin: 
       number: D7
@@ -127,5 +127,5 @@ fan:
   - platform: speed
     id: bedroomboxfan
     output: fan_1
-    name: "${namefull}"
+    name: "${name}"
     speed_count: 3
