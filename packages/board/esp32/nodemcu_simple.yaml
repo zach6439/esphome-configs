@@ -41,9 +41,3 @@ sensor:
     # update_interval: ${device_sampling_time}
     entity_category: diagnostic
     disabled_by_default: true
-
-  - platform: adc
-    pin: VCC
-    name: "Chip Voltage"
-    entity_category: diagnostic
-    disabled_by_default: true

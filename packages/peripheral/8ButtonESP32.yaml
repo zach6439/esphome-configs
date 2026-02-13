@@ -4,7 +4,7 @@ binary_sensor:
       number: GPIO23
       mode: INPUT_PULLUP
       inverted: True
-    name: "${namefull}_key_1"
+    name: "${name}_key_1"
     filters:
       - delayed_on: 10ms
     
@@ -13,7 +13,7 @@ binary_sensor:
       number: GPIO22
       mode: INPUT_PULLUP
       inverted: True
-    name: "${namefull}_key_2"
+    name: "${name}_key_2"
     filters:
       - delayed_on: 10ms
        
@@ -22,7 +22,7 @@ binary_sensor:
       number: GPIO21
       mode: INPUT_PULLUP
       inverted: True
-    name: "${namefull}_key_3"
+    name: "${name}_key_3"
     filters:
       - delayed_on: 10ms
     
@@ -31,7 +31,7 @@ binary_sensor:
       number: GPIO19
       mode: INPUT_PULLUP
       inverted: True
-    name: "${namefull}_key_4"
+    name: "${name}_key_4"
     filters:
       - delayed_on: 10ms
     
@@ -40,7 +40,7 @@ binary_sensor:
       number: GPIO27
       mode: INPUT_PULLUP
       inverted: True
-    name: "${namefull}_key_5"
+    name: "${name}_key_5"
     filters:
       - delayed_on: 10ms 
     
@@ -49,7 +49,7 @@ binary_sensor:
       number: GPIO32
       mode: INPUT_PULLUP
       inverted: True  
-    name: "${namefull}_key_6"
+    name: "${name}_key_6"
     filters:
       - delayed_on: 10ms
       
@@ -58,7 +58,7 @@ binary_sensor:
       number: GPIO12
       mode: INPUT_PULLUP
       inverted: True  
-    name: "${namefull}_key_7"
+    name: "${name}_key_7"
     filters:
       - delayed_on: 10ms
       
@@ -67,6 +67,6 @@ binary_sensor:
       number: GPIO13
       mode: INPUT_PULLUP
       inverted: True  
-    name: "${namefull}_key_8"
+    name: "${name}_key_8"
     filters:
       - delayed_on: 10ms      

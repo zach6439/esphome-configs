@@ -1,9 +1,7 @@
 substitutions: #for the name of the fan to input below
-  name: bedroom #Specific name 
-  zone: zach    #Zone in room
-  device_type: buttonstation #Device Type
-  namefull: "${name}_${zone}_${device_type}" #Specific name with device type
-  nameforesphomefile: "${name}${zone}${device_type}" # Name for the file
+  name: bedroomzachbuttonstation #Specific name 
+  friendlyname: Bedroom Zach Button Station
+  area: Bedroom
   loglevel: DEBUG #NONE or DEBUG
   ip: 10.30.2.9 
   sampling_time: 60s

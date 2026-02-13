@@ -7,11 +7,6 @@
 #   ip: 10.30.X.X
 #   sampling_time: 60s
 
-
-
-
-
-
 esphome:
   name: "${name}"
 
