@@ -2,7 +2,6 @@ substitutions: #for the name of the fan to input below
   name: bedroomdresserled01 #Specific name 
   area: bedroom
   loglevel: DEBUG #NONE or DEBUG
-  area: bedroom
   ip: 10.30.2.16
   sampling_time: 60s
 
