@@ -40,4 +40,4 @@ text_sensor:
     disabled_by_default: true
 
 packages:
-  wifi: !include /config/esphome/packages/common/network/wifi.yaml
+  wifi: !include ../network/wifi.yaml
