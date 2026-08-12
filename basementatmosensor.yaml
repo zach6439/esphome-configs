@@ -1,5 +1,5 @@
 substitutions: #for the name of the fan to input below
-  name: basement #Specific name 
+  name: basementatmosensor #Specific name 
   friendlyname: Basement Atmo Sensor #Friendly Name
   area: Network Rack
   loglevel: DEBUG #NONE or DEBUG
