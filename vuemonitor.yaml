@@ -16,7 +16,7 @@ external_components:
 # Enable Home Assistant API…
 api:
   encryption:
-    key: !secret api_key
+    key: !secret api_enc
 
 # …and use HA for setting our RTC time locally
 time:
