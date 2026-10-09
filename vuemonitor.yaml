@@ -30,7 +30,7 @@ switch:
 # enable OTA updates after first flash
 ota:
   platform: esphome
-  password: !secret ota_key
+  password: !secret ota_pass
 
 # enable logging, with some customizations
 logger:
